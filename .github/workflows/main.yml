@@ -29,12 +29,6 @@ jobs:
             curl \
             git
 
-      - name: ksu
-        run: |
-         wget https://raw.githubusercontent.com/rksuorg/kernel_patches/refs/heads/master/manual_hook/kernel-4.19_5.4.patch
-         patch -p1 < kernel-4.19_5.4.patch
-         curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
-            
       - name: Configure and Build Kernel
         run: bash compile.sh guamp
 
@@ -45,12 +39,12 @@ jobs:
         run: |
          cp out/arch/arm64/boot/Image.gz-dtb AnyKernel3/Image.gz-dtb
          cd AnyKernel3
-         zip -r9 "../alessandro r8s KernelSU.zip" * -x .git .github README.md *placeholder
+         zip -r9 "../alessandro guamp KernelSU.zip" * -x .git .github README.md *placeholder
 
       - name: Upload AnyKernel package
         uses: actions/upload-artifact@v7
         with:
          name: AnyKernel package
-         path: alessandro r8s KernelSU.zip
+         path: alessandro guamp KernelSU.zip
 
   
