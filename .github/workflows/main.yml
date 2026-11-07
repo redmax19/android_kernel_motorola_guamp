@@ -31,8 +31,8 @@ jobs:
 
       - name: ksu
         run: |
-         curl -LSs "https://raw.githubusercontent.com/backslashxx/KernelSU/master/kernel/setup.sh" | bash -
-            
+         curl -LSs "https://raw.githubusercontent.com/manipvlator/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s main
+         
       - name: Configure and Build Kernel
         run: bash compile.sh guamp
 
